@@ -1,3 +1,4 @@
+# Use langchain to translate a customer service reply into a polite pirate style.
 import os
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
