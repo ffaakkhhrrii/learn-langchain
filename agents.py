@@ -21,9 +21,6 @@ chat = ChatGoogleGenerativeAI(
     google_api_key=model_key,
 )
 
-
-# ========== TOOL DEFINITION ==========
-
 @tool
 def search_wikipedia(query: str) -> str:
     """Search Wikipedia for information about a topic. 
@@ -39,15 +36,13 @@ def search_wikipedia(query: str) -> str:
         return f"Error searching Wikipedia: {str(e)}"
 
 
-# ========== AGENT SETUP (LangChain 1.1.0) ==========
-
 # Bind tools to LLM
 tools = [search_wikipedia]
 llm_with_tools = chat.bind_tools(tools)
 
 # Create prompt template
 prompt = ChatPromptTemplate.from_messages([
-    ("system", """You are a helpful AI assistant named AnjingPintar with access to Wikipedia search tool.
+    ("system", """You are a helpful AI assistant named LocalPedia with access to Wikipedia search tool.
     
     When users ask about factual information, people, places, events, or things, 
     use the search_wikipedia tool to get accurate information.
@@ -86,11 +81,9 @@ def run_agent(user_input: str) -> str:
         return response.content
 
 
-# ========== MAIN EXECUTION ==========
-
 if __name__ == "__main__":
     print("LANGCHAIN AGENT WITH WIKIPEDIA TOOL")
     print("\n[Example 2: Wikipedia Search - Albert Einstein]")
     result = run_agent("Hello, who are you? I want to ask, Who is Albert Einstein?")
-    print(f"✅ Final Answer: {result}")
+    print(f"Final Answer: {result}")
     print("Demo completed!")
