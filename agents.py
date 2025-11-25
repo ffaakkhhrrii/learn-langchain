@@ -17,7 +17,7 @@ model_provider = os.getenv("LLM_PROVIDER")
 
 chat = ChatGoogleGenerativeAI(
     model=model_name,
-    temperature=0,
+    temperature=0.9,
     google_api_key=model_key,
 )
 
@@ -47,7 +47,7 @@ llm_with_tools = chat.bind_tools(tools)
 
 # Create prompt template
 prompt = ChatPromptTemplate.from_messages([
-    ("system", """You are a helpful AI assistant named FakhriPedia with access to Wikipedia search tool.
+    ("system", """You are a helpful AI assistant named AnjingPintar with access to Wikipedia search tool.
     
     When users ask about factual information, people, places, events, or things, 
     use the search_wikipedia tool to get accurate information.
